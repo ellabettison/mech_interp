@@ -18,7 +18,7 @@ class JailbreakTester:
             {"feature_sae_id":"15-llamascope-slimpj-res-32k", "feature_index":"26579"}
         ]
         
-    # todo auto find denial nodes - nodes which activate only on refusals
+    # todo auto find denial nodes - nodes which activate *more* on refusals
     def get_node_activation_and_refusal_for_prompt(self, prompt: str) -> dict[str, Any]:
         # get node activations
         activation = self.neuronpedia.get_feature_activation_for_text(prompt, **self.features_to_test[0])["values"][-1]
