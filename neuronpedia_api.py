@@ -162,4 +162,31 @@ class NeuronpediaAPI:
         response = response.json()
         cleaned_response = [self.filter_feature_fields(feature) for feature in response["result"]]
         return cleaned_response
+    
+    def get_completion(self, prompt: str):
+        response = requests.post(
+            "https://www.neuronpedia.org/api/steer",
+            headers={
+                "Content-Type": "application/json"
+            },
+            json={
+                "prompt": prompt,
+                "modelId": self.model,
+                "features": [
+                    {
+                        "modelId": "deepseek-r1-distill-llama-8b",
+                        "layer": "15-llamascope-slimpj-res-32k",
+                        "index": 1948,
+                        "strength": 0
+                    }
+                ],
+                "temperature": 0.0,
+                "n_tokens": 128,
+                "freq_penalty": 2,
+                "seed": 16,
+                "strength_multiplier": 4,
+                "steer_special_tokens": False,
+            }
+        )
+        return response.json()
         
