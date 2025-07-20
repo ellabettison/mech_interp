@@ -21,7 +21,7 @@ class JailbreakTester:
     # todo auto find denial nodes - nodes which activate *more* on refusals
     def get_node_activation_and_refusal_for_prompt(self, prompt: str) -> dict[str, Any]:
         # get node activations
-        activation = self.neuronpedia.get_feature_activation_for_text(prompt, **self.features_to_test[0])["values"][-1]
+        activation = self.neuronpedia.get_max_feature_activation_for_text(prompt, **self.features_to_test[0])["values"][-1]
         
         # get refusal or compliance
         model_response = self.neuronpedia.get_completion(prompt)
