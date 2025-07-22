@@ -60,7 +60,7 @@ class NeuronpediaAPI:
         results = json.loads(response.content)["results"]
         return [self.filter_feature_fields(res) for res in results]
     
-    def get_feature_activation_for_text(self, text: str, feature_sae_id: str, feature_index: str):
+    def get_max_feature_activation_for_text(self, text: str, feature_sae_id: str, feature_index: str):
         response = requests.post(
             "https://www.neuronpedia.org/api/activation/new",
             headers={
@@ -76,17 +76,44 @@ class NeuronpediaAPI:
             }
         )
         print(response)
-        return response.json()
+        print(response.content)
+        json_response = response.json()
+        if "activations" in json_response:
+            return json_response["activations"]["maxValue"]
+        return json_response["maxValue"] # should this be ["activations"]["maxValue"] ??
 
-    def get_info_for_feature(self, layer: str, index: str):
+    def get_feature_activation_for_text_by_token(self, text: str, feature_sae_id: str, feature_index: str, token_ind: int=-1):
+        response = requests.post(
+            "https://www.neuronpedia.org/api/activation/new",
+            headers={
+                "Content-Type": "application/json"
+            },
+            json={
+                "feature": {
+                    "modelId": self.model,
+                    "source": feature_sae_id,
+                    "index": feature_index
+                },
+                "customText": text
+            }
+        )
+        print(response)
+        print(response.content)
+        json_response = response.json()
+        if "activations" in json_response:
+            return json_response["activations"]["values"][token_ind]
+        return json_response["maxValue"] # should this be ["activations"]["maxValue"] ??
+
+    def get_info_for_feature(self, layer: str, index: str, filter=True):
         response = requests.get(
             f"https://www.neuronpedia.org/api/feature/{self.model}/{layer}/{index}"
         )
         json_response = json.loads(response.content)
 
-        filtered_json = self.filter_feature_fields(json_response)
+        if filter:
+            json_response = self.filter_feature_fields(json_response)
 
-        return filtered_json
+        return json_response
 
     def filter_feature_fields(self, json_response):
         fields_to_return = [
@@ -94,7 +121,8 @@ class NeuronpediaAPI:
             "layer",
             "index",
             "description",
-            "neuron"
+            "neuron",
+            "explanations"
         ]
         neuron_fields_to_return = [
             # "neg_str",
@@ -139,7 +167,7 @@ class NeuronpediaAPI:
                     }
         return filtered_json
 
-    def get_top_features_for_text(self, text: str, sourceSet: str):
+    def get_top_features_for_text(self, text: str, sourceSet: str, num_results: int=100, filter: bool = True):
         response = requests.post(
             "https://www.neuronpedia.org/api/search-all",
             headers={
@@ -154,14 +182,33 @@ class NeuronpediaAPI:
                 "sortIndexes": [
                 ],
                 "ignoreBos": True,
-                "densityThreshold": -1,
-                "numResults": 100
+                "densityThreshold": 0.1,
+                "numResults": num_results
             }
         )
         print(response)
-        response = response.json()
-        cleaned_response = [self.filter_feature_fields(feature) for feature in response["result"]]
-        return cleaned_response
+        response = response.json()["result"]
+        if filter:
+            response = [self.filter_feature_fields(feature) for feature in response]
+        return response
+
+    def get_top_features_for_text_by_token(self, text: str, sourceSet: str, token_ind: int=-1):
+        response = requests.post(
+            "https://www.neuronpedia.org/api/search-topk-by-token",
+            headers={
+                "Content-Type": "application/json"
+            },
+            json={
+                "modelId": self.model,
+                "source": sourceSet,
+                "text": text,
+                "ignoreBos": True,
+                "densityThreshold": 0.1,
+                "numResults": 20
+            }
+        )
+        response = response.json()["results"][token_ind]
+        return response["topFeatures"]
     
     def get_completion(self, prompt: str):
         response = requests.post(
@@ -188,5 +235,6 @@ class NeuronpediaAPI:
                 "steer_special_tokens": False,
             }
         )
+        print(response.content)
         return response.json()
         
