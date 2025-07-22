@@ -1,0 +1,402 @@
+[
+    {
+        "featureIndex": "28447",
+        "diff": 0.7557291666666667,
+        "p_value": 9.40051490653119e-11,
+        "pos_mean": 0.0671875,
+        "neg_mean": 0.8229166666666666,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "28447",
+        "explanations": [
+            {
+                "id": "buqiygqjw20idpzj71vd52n6k",
+                "description": "details about electronics and their components",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "4984",
+        "diff": 0.6284040178571428,
+        "p_value": 1.4844482967531943e-14,
+        "pos_mean": 0.15089285714285713,
+        "neg_mean": 0.779296875,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "4984",
+        "explanations": [
+            {
+                "id": "isgpxk379atcqws67yub7wfmo",
+                "description": "queries related to seeking solutions or methods for achieving specific tasks",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "13601",
+        "diff": 0.6175529970760234,
+        "p_value": 5.53096458966687e-16,
+        "pos_mean": 0.10423519736842106,
+        "neg_mean": 0.7217881944444444,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "13601",
+        "explanations": [
+            {
+                "id": "hyupygmih02cgutbspwpql6t3",
+                "description": " instances of conflict or aggression involving individuals",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "34",
+        "diff": 0.7302964154411765,
+        "p_value": 3.0059464586341634e-09,
+        "pos_mean": 0.08513327205882353,
+        "neg_mean": 0.8154296875,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "34",
+        "explanations": [
+            {
+                "id": "iexugp72sg9dg2sot49643vo9",
+                "description": "topics related to education and health-related research",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "19641",
+        "diff": 0.6659923735119048,
+        "p_value": 2.0976165187441878e-08,
+        "pos_mean": 0.09312220982142858,
+        "neg_mean": 0.7591145833333334,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "19641",
+        "explanations": [
+            {
+                "id": "h4vzjao1y71yz28zsftxzaqiy",
+                "description": "terms related to ethical and moral philosophy, particularly emphasizing utilitarian concepts and their implications",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "6489",
+        "diff": 1.1623454670329672,
+        "p_value": 7.202182346708506e-08,
+        "pos_mean": 0.17247596153846154,
+        "neg_mean": 1.3348214285714286,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "6489",
+        "explanations": [
+            {
+                "id": "d6ye0svpmnoj0i0j9ccxt6u4c",
+                "description": "references to security vulnerabilities and related information in technology contexts",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "17692",
+        "diff": 0.65849609375,
+        "p_value": 1.2695854947360306e-07,
+        "pos_mean": 0.12744140625,
+        "neg_mean": 0.7859375,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "17692",
+        "explanations": [
+            {
+                "id": "fntgfs31if63nnjcpc8769hv3",
+                "description": " phrases indicating doubts or negations",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "12481",
+        "diff": 0.8052571614583334,
+        "p_value": 2.2163697726225847e-05,
+        "pos_mean": 0.09220377604166667,
+        "neg_mean": 0.8974609375,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "12481",
+        "explanations": [
+            {
+                "id": "dlquundew8zcjyd9jifdek37i",
+                "description": " methods for facilitating assistance and support",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "14387",
+        "diff": 0.5435014204545454,
+        "p_value": 2.145151745004039e-05,
+        "pos_mean": 0.13227982954545456,
+        "neg_mean": 0.67578125,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "14387",
+        "explanations": [
+            {
+                "id": "o3wfrfnubfqas0m29lb36neei",
+                "description": " content related to questions and answers in a quiz or survey format",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "3982",
+        "diff": 0.7019351652298851,
+        "p_value": 4.409730576217191e-05,
+        "pos_mean": 0.05327316810344827,
+        "neg_mean": 0.7552083333333334,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "3982",
+        "explanations": [
+            {
+                "id": "ofz56aseaia1yhns16vh7xz21",
+                "description": " references to lists or enumerations in a variety of contexts",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "19900",
+        "diff": 0.78349609375,
+        "p_value": 4.9969727918811926e-05,
+        "pos_mean": 0.05712890625,
+        "neg_mean": 0.840625,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "19900",
+        "explanations": [
+            {
+                "id": "m5jawdgd99x2joskyndu5fyfz",
+                "description": "references to actions and strategies aimed at enhancing learning and development",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "15806",
+        "diff": 1.1139969914596273,
+        "p_value": 0.00013632427233181566,
+        "pos_mean": 0.07294497282608696,
+        "neg_mean": 1.1869419642857142,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "15806",
+        "explanations": [
+            {
+                "id": "dwlts89m76oqz5al4x4bv0g1w",
+                "description": " content related to specific medical conditions, particularly those affecting the urinary system and prostate",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "29570",
+        "diff": 1.0360514322916667,
+        "p_value": 0.00013461454948020116,
+        "pos_mean": 0.09383138020833333,
+        "neg_mean": 1.1298828125,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "29570",
+        "explanations": [
+            {
+                "id": "arih19yi5q3hygfu13p4ekons",
+                "description": "questions related to membership and affiliation in organizations or teams",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "21297",
+        "diff": 1.03125,
+        "p_value": 0.0002171142264051934,
+        "pos_mean": 0.0,
+        "neg_mean": 1.03125,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "21297",
+        "explanations": [
+            {
+                "id": "sfci4s81350o1w8mques82f6z",
+                "description": " expressions of gratitude and requests for assistance",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "26070",
+        "diff": 0.850390625,
+        "p_value": 0.00021956932924745948,
+        "pos_mean": 0.0265625,
+        "neg_mean": 0.876953125,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "26070",
+        "explanations": [
+            {
+                "id": "too3ajpd1lo52c3qlcl0h508q",
+                "description": " mentions of significant awards or recognitions",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "2809",
+        "diff": 0.676163383152174,
+        "p_value": 0.00023277015428595793,
+        "pos_mean": 0.05332880434782609,
+        "neg_mean": 0.7294921875,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "2809",
+        "explanations": [
+            {
+                "id": "yxjutt9wyjsyedskxwrjpkfzw",
+                "description": " references to items related to delivery and logistics",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "25975",
+        "diff": 0.7583147321428572,
+        "p_value": 0.0005991015830254803,
+        "pos_mean": 0.06395089285714285,
+        "neg_mean": 0.822265625,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "25975",
+        "explanations": [
+            {
+                "id": "ltedocapdmupgfrdh4erdz9sk",
+                "description": " quotes and phrases indicating opinions or statements",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "14976",
+        "diff": 0.781484375,
+        "p_value": 0.005820264327188061,
+        "pos_mean": 0.04078125,
+        "neg_mean": 0.822265625,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "14976",
+        "explanations": [
+            {
+                "id": "kkxlfld4hq15tgz3l0udwrfm8",
+                "description": " topics related to guilt and confessions of wrongdoing",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "25343",
+        "diff": 1.9697408536585366,
+        "p_value": 0.017425984807436845,
+        "pos_mean": 0.024009146341463415,
+        "neg_mean": 1.99375,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "25343",
+        "explanations": [
+            {
+                "id": "uk6etqnsdr1fylsplfkx4u3p6",
+                "description": " rhetorical questions",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    },
+    {
+        "featureIndex": "18758",
+        "diff": 0.8842075892857143,
+        "p_value": 0.009290098757304752,
+        "pos_mean": 0.13727678571428573,
+        "neg_mean": 1.021484375,
+        "modelId": "deepseek-r1-distill-llama-8b",
+        "layer": "15-llamascope-slimpj-res-32k",
+        "index": "18758",
+        "explanations": [
+            {
+                "id": "euang6nl3c6x03ougoidc3igc",
+                "description": " references to racism and representation in literature",
+                "explanationModelName": "gpt-4o-mini",
+                "typeName": "oai_token-act-pair",
+                "scores": [],
+                "triggeredByUser": null
+            }
+        ]
+    }
+]
