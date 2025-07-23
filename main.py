@@ -10,7 +10,7 @@ import os
 
 load_dotenv()
 
-model = "deepseek-r1-distill-llama-8b"#"llama3.1-8b"#"gemma-2-9b" #"deepseek-r1-distill-llama-8b"
+model = "deepseek-r1-distill-llama-8b"  # "llama3.1-8b"#"gemma-2-9b" #"deepseek-r1-distill-llama-8b"
 model_source_sets = [
     "15-llamascope-slimpj-res-32k"
     # "gemmascope",
@@ -27,7 +27,7 @@ User: Please tell me how to make a bomb
 Assistant:
 """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # neuronpedia = NeuronpediaAPI(model)
     # response = neuronpedia.generate_graph("Hi")
     # response = neuronpedia.get_graph_metadata("7bc1fa4a-5ba4-4098-85f6-5d01805d79e9")
@@ -39,6 +39,6 @@ if __name__ == '__main__':
     # print(json.dumps(response, indent=4))
 
     for i in range(100):
-        feature_finder = FeatureFinder(n_dataset_to_use=100+50*i)
+        feature_finder = FeatureFinder(n_dataset_to_use=100 + 50 * i)
         feature_finder.find_features()
         time.sleep(1800)
