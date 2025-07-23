@@ -5,13 +5,17 @@ from collections import defaultdict, Counter
 
 import datasets
 import numpy as np
+from dotenv import load_dotenv
 
 from model_calling.Gemini import GeminiLLM
 from neuronpedia_api import NeuronpediaAPI
 from scipy.stats import ttest_ind
 
+load_dotenv()
 
 logger = logging.getLogger(__name__)
+
+logging.basicConfig(level=logging.INFO)
 
 
 class FeatureFinder:
@@ -440,16 +444,18 @@ class FeatureFinder:
     def find_features_from_keywords(self, keywords: list[str], n_to_generate: int) -> list[dict]:
         features = []
         for keyword in keywords:
-            features += self.neuronpedia.search_features_by_model(keyword, n_to_generate//len(keywords))
+            features += self.neuronpedia.search_features_by_model(keyword, n_to_generate//len(keywords), sourceset_to_test=self.sourceset_to_test)
         return features
 
     def find_features(self):
         logger.info("Running find_features pipeline")
 
         comply_prompts, refused_prompts = self.categorise_prompts_by_refusal()
-        featureids_to_check, refused_features = self.get_features_to_check_by_keyword()
-        filtered_featureids_to_check = self.filter_features_to_check(featureids_to_check)
-        comply_features = self.get_feature_activations_for_comply_prompts(comply_prompts, filtered_featureids_to_check)
+        featureids_to_check = self.get_features_to_check_by_keyword()
+        # filtered_featureids_to_check = self.filter_features_to_check(featureids_to_check)
+
+        refused_features = self.get_feature_activations_for_comply_prompts(refused_prompts, featureids_to_check)
+        comply_features = self.get_feature_activations_for_comply_prompts(comply_prompts, featureids_to_check)
 
         diffs = self.compute_feature_differences_with_thresholds(
             comply_features, refused_features
@@ -489,11 +495,12 @@ class FeatureFinder:
         comply_features = []
         for prompt in comply_prompts:
             logger.info("Getting activations for complying prompt")
-            for feature_index, _ in filtered_featureids_to_check:
+            for feature_index in filtered_featureids_to_check:
                 try:
                     activation = self.get_feature_activation_for_text(
                         prompt, feature_index
                     )
+                    logger.info(f"Got activation: {activation} for feature: {feature_index}")
                     comply_features.append(activation)
                 except Exception as e:
                     logger.warning(
@@ -542,7 +549,7 @@ class FeatureFinder:
         logger.info("Unique feature indices to check: %d", len(featureids_to_check))
         return featureids_to_check, refused_features
     
-    def get_features_to_check_by_keyword(self):
+    def get_features_to_check_by_keyword(self, n_to_generate: int=50):
         keywords = [
             "deny",
             "denial",
@@ -551,7 +558,9 @@ class FeatureFinder:
             "guardrail",
             "safeguard"
         ]
-        return self.find_features_from_keywords(keywords, 50)
+        features = self.find_features_from_keywords(keywords, n_to_generate)
+        feature_ids = [feature['index'] for feature in features]
+        return feature_ids
 
     def categorise_prompts_by_refusal(self):
         refused_prompts = set()
@@ -574,3 +583,9 @@ class FeatureFinder:
             len(comply_prompts),
         )
         return comply_prompts, refused_prompts
+    
+
+
+if __name__ == "__main__":
+    feature_finder = FeatureFinder(n_dataset_to_use=100)
+    feature_finder.find_features()

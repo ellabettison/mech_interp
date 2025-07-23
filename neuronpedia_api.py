@@ -39,11 +39,19 @@ class NeuronpediaAPI:
         )
         return response.content
     
-    def search_features_by_model(self, query: str, n_to_generate: int):
-        results =  []
-        for i in range(n_to_generate//20+1):
-            results += self._search_features_by_model(query, i*20)
-        return results[:n_to_generate]
+    def search_features_by_model(self, query: str, n_to_generate: int, sourceset_to_test: str):
+        features = []
+        i = 0
+        while len(features) < n_to_generate and i < n_to_generate/4:
+            res = self._search_features_by_model(query, i*20)
+            logging.getLogger().info(f"Got result from search: {len(res)}")
+            logging.getLogger().info(f"Got result: {[(r['modelId'], r['layer']) for r in res]}")
+            filtered_res = [r for r in res if r['modelId'] == self.model and sourceset_to_test in r['layer']]
+            logging.getLogger().info(f"Filtered to {len(filtered_res)}")
+            features += filtered_res
+            logging.getLogger().info(f"New features size: {(len(features))}")
+            i += 1
+        return features[:n_to_generate]
 
     def _search_features_by_model(self, query: str, offset: int=0):
         """
@@ -52,8 +60,9 @@ class NeuronpediaAPI:
         :param query:
         :return:
         """
+        logging.getLogger().info(f"Searching for query: {query} and model: {self.model}")
         response = requests.post(
-            "https://www.neuronpedia.org/api/explanation/search-all",
+            "https://www.neuronpedia.org/api/explanation/search-model",
             headers={"Content-Type": "application/json"},
             json={
                 "modelId": self.model,

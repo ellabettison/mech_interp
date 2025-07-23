@@ -38,7 +38,5 @@ if __name__ == "__main__":
     # response = neuronpedia.get_info_for_feature("15-llamascope-slimpj-res-32k", "26579")
     # print(json.dumps(response, indent=4))
 
-    for i in range(100):
-        feature_finder = FeatureFinder(n_dataset_to_use=100 + 50 * i)
-        feature_finder.find_features()
-        time.sleep(1800)
+    feature_finder = FeatureFinder(n_dataset_to_use=100 )
+    feature_finder.find_features()
