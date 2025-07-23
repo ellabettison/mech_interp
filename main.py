@@ -1,6 +1,7 @@
 import json
 import logging
-
+from dotenv import load_dotenv
+load_dotenv()
 from neuronpedia_api import NeuronpediaAPI
 
 model = "deepseek-r1-distill-llama-8b"#"llama3.1-8b"#"gemma-2-9b" #"deepseek-r1-distill-llama-8b"

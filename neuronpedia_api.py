@@ -3,7 +3,8 @@ import logging
 import os
 import uuid
 from http.client import HTTPException
-
+from dotenv import load_dotenv
+load_dotenv(override=True)
 import requests
 
 
@@ -11,14 +12,20 @@ class NeuronpediaAPI:
     def __init__(self, model: str):
         self.api_key = os.environ["NEURONPEDIA_API_KEY"]
         self.model = model
-        
+    
+    def _get_headers(self):
+        # Now use Authorization: Bearer ...
+        return {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}"
+            # "x-api-key": self.api_key
+        }
+    
     def generate_graph(self, prompt: str) -> str:
         slug = str(uuid.uuid4())
         response = requests.post(
             "https://www.neuronpedia.org/api/graph/generate",
-            headers={
-                "Content-Type": "application/json"
-            },
+            headers=self._get_headers(),
             json={
                 "prompt": prompt,
                 "modelId": self.model,
@@ -36,7 +43,7 @@ class NeuronpediaAPI:
         return slug
     
     def get_graph_metadata(self, slug: str):
-        response = requests.get(f"https://www.neuronpedia.org/api/graph/{self.model}/{slug}")
+        response = requests.get(f"https://www.neuronpedia.org/api/graph/{self.model}/{slug}", headers=self._get_headers())
         return response.content
     
     def search_features_by_model(self, query: str):
@@ -48,9 +55,7 @@ class NeuronpediaAPI:
         """
         response = requests.post(
             "https://www.neuronpedia.org/api/explanation/search-all",
-            headers={
-                "Content-Type": "application/json"
-            },
+            headers=self._get_headers(),
             json={
                 "modelId": self.model,
                 "query": query,
@@ -63,9 +68,7 @@ class NeuronpediaAPI:
     def get_feature_activation_for_text(self, text: str, feature_sae_id: str, feature_index: str):
         response = requests.post(
             "https://www.neuronpedia.org/api/activation/new",
-            headers={
-                "Content-Type": "application/json"
-            },
+            headers=self._get_headers(),
             json={
                 "feature": {
                     "modelId": self.model,
@@ -75,12 +78,14 @@ class NeuronpediaAPI:
                 "customText": text
             }
         )
-        print(response)
+        print("Status code:", response.status_code)
+        print("Response text:", response.text)
         return response.json()
 
     def get_info_for_feature(self, layer: str, index: str):
         response = requests.get(
-            f"https://www.neuronpedia.org/api/feature/{self.model}/{layer}/{index}"
+            f"https://www.neuronpedia.org/api/feature/{self.model}/{layer}/{index}",
+            headers=self._get_headers()
         )
         json_response = json.loads(response.content)
 
@@ -142,9 +147,7 @@ class NeuronpediaAPI:
     def get_top_features_for_text(self, text: str, sourceSet: str):
         response = requests.post(
             "https://www.neuronpedia.org/api/search-all",
-            headers={
-                "Content-Type": "application/json"
-            },
+            headers=self._get_headers(),
             json={
                 "modelId": self.model,
                 "sourceSet": sourceSet,
@@ -166,9 +169,7 @@ class NeuronpediaAPI:
     def get_completion(self, prompt: str):
         response = requests.post(
             "https://www.neuronpedia.org/api/steer",
-            headers={
-                "Content-Type": "application/json"
-            },
+            headers=self._get_headers(),
             json={
                 "prompt": prompt,
                 "modelId": self.model,
@@ -189,4 +190,38 @@ class NeuronpediaAPI:
             }
         )
         return response.json()
+
+    def get_all_features(self, query: str = "", batch_size: int = 100) -> list:
+        """
+        Fetch all features for the model using pagination.
+        :param query: Keyword to filter features (empty for all)
+        :param batch_size: Number of features to fetch per request
+        :return: List of all features
+        """
+        all_features = []
+        offset = 0
+        while True:
+            response = requests.post(
+                "https://www.neuronpedia.org/api/explanation/search-all",
+                headers=self._get_headers(),
+                json={
+                    "modelId": self.model,
+                    "query": query,
+                    "offset": offset,
+                    "limit": batch_size
+                }
+            )
+            try:
+                data = json.loads(response.content)
+                print(f"get_all_features response: {data}")
+                results = data["results"]
+            except Exception as e:
+                print(f"Error parsing response or missing 'results': {e}")
+                print(f"Raw response: {response.content}")
+                break
+            if not results:
+                break
+            all_features.extend([self.filter_feature_fields(res) for res in results])
+            offset += batch_size
+        return all_features
         
