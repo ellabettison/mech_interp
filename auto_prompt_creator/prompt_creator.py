@@ -16,9 +16,9 @@ logging.basicConfig(level=logging.INFO)
 
 class PromptCreator:
     def __init__(
-            self,
-            model_name: str = "deepseek-r1-distill-llama-8b",
-            sourceset: str = "15-llamascope-slimpj-res-32k",
+        self,
+        model_name: str = "deepseek-r1-distill-llama-8b",
+        sourceset: str = "15-llamascope-slimpj-res-32k",
     ):
         logger.info(
             "Initializing PromptCreator with model=%s and sourceset=%s",
@@ -30,11 +30,11 @@ class PromptCreator:
         self.model = GeminiLLM()
 
     def try_fix_prompt(
-            self,
-            failing_prompt: str,
-            strength: float,
-            feature_sae_id="15-llamascope-slimpj-res-32k",
-            feature_index="26579",
+        self,
+        failing_prompt: str,
+        strength: float,
+        feature_sae_id="15-llamascope-slimpj-res-32k",
+        feature_index="26579",
     ) -> tuple[bool, list[bool]]:
         initial_refusal = self.test_prompt_refusal(failing_prompt)
         completion = self.neuronpedia.get_completion(
@@ -51,11 +51,17 @@ class PromptCreator:
             strength=strength,
         )
         steered_completion = self.extract_variations(completion["STEERED"])
-        filtered_completions = [completion for completion in steered_completion if len(completion.strip()) > 0]
+        filtered_completions = [
+            completion
+            for completion in steered_completion
+            if len(completion.strip()) > 0
+        ]
         logger.info(f"Filtered completions: {filtered_completions}")
         if len(filtered_completions) == 0:
             return initial_refusal, []
-        logger.info(f"Strength {strength} - Variations:\n" + "\n".join(filtered_completions))
+        logger.info(
+            f"Strength {strength} - Variations:\n" + "\n".join(filtered_completions)
+        )
         refusal = self.test_prompt_refusal(filtered_completions[0])
         return initial_refusal, [refusal]
 
@@ -73,28 +79,36 @@ class PromptCreator:
 
     @staticmethod
     def extract_variations(text: str) -> list[str]:
-        return re.findall(r'<variation>(.*?)</variation>', text, re.DOTALL)
+        return re.findall(r"<variation>(.*?)</variation>", text, re.DOTALL)
 
 
-def analyze_refusal_results(results: dict[float, list[bool]], initial_refusals: list[bool]):
+def analyze_refusal_results(
+    results: dict[float, list[bool]], initial_refusals: list[bool]
+):
     print("\n=== Refusal Analysis ===")
     total = len(initial_refusals)
     initial_refused = sum(initial_refusals)
     print(f"Total prompts tested: {total}")
-    print(f"Initial refusals: {initial_refused}/{total} ({(initial_refused / total * 100):.1f}%)\n")
+    print(
+        f"Initial refusals: {initial_refused}/{total} ({(initial_refused / total * 100):.1f}%)\n"
+    )
 
     print("=== Refusal Rate After Fixing (By Strength) ===")
     for strength in sorted(results.keys()):
         refusals = results[strength]
         total_variations = len(refusals)
         refused = sum(refusals)
-        print(f"Strength {strength:.2f}: {refused}/{total_variations} refusals ({(refused / total_variations * 100):.1f}%)")
+        print(
+            f"Strength {strength:.2f}: {refused}/{total_variations} refusals ({(refused / total_variations * 100):.1f}%)"
+        )
 
 
 if __name__ == "__main__":
-    basic_dataset = list(datasets.load_dataset(
-        "JailbreakBench/JBB-Behaviors", "judge_comparison"
-    )["test"]["prompt"])
+    basic_dataset = list(
+        datasets.load_dataset("JailbreakBench/JBB-Behaviors", "judge_comparison")[
+            "test"
+        ]["prompt"]
+    )
 
     prompt_creator = PromptCreator()
 
@@ -108,11 +122,15 @@ if __name__ == "__main__":
         for i in range(num_prompts):
             prompt = basic_dataset[i]
             try:
-                initial_refusal, refusals = prompt_creator.try_fix_prompt(prompt, strength=strength)
+                initial_refusal, refusals = prompt_creator.try_fix_prompt(
+                    prompt, strength=strength
+                )
                 if strength == strength_values[0]:  # Only store initial refusal once
                     initial_refusal_flags.append(initial_refusal)
                 results_by_strength[strength].extend(refusals)
             except Exception as e:
-                logger.warning(f"Error processing prompt {i} at strength {strength}: {e}")
+                logger.warning(
+                    f"Error processing prompt {i} at strength {strength}: {e}"
+                )
 
     analyze_refusal_results(results_by_strength, initial_refusal_flags)

@@ -38,29 +38,39 @@ class NeuronpediaAPI:
             f"https://www.neuronpedia.org/api/graph/{self.model}/{slug}"
         )
         return response.content
-    
-    def search_features_by_model(self, query: str, n_to_generate: int, sourceset_to_test: str):
+
+    def search_features_by_model(
+        self, query: str, n_to_generate: int, sourceset_to_test: str
+    ):
         features = []
         i = 0
-        while len(features) < n_to_generate and i < n_to_generate/4:
-            res = self._search_features_by_model(query, i*20)
+        while len(features) < n_to_generate and i < n_to_generate / 4:
+            res = self._search_features_by_model(query, i * 20)
             logging.getLogger().info(f"Got result from search: {len(res)}")
-            logging.getLogger().info(f"Got result: {[(r['modelId'], r['layer']) for r in res]}")
-            filtered_res = [r for r in res if r['modelId'] == self.model and sourceset_to_test in r['layer']]
+            logging.getLogger().info(
+                f"Got result: {[(r['modelId'], r['layer']) for r in res]}"
+            )
+            filtered_res = [
+                r
+                for r in res
+                if r["modelId"] == self.model and sourceset_to_test in r["layer"]
+            ]
             logging.getLogger().info(f"Filtered to {len(filtered_res)}")
             features += filtered_res
             logging.getLogger().info(f"New features size: {(len(features))}")
             i += 1
         return features[:n_to_generate]
 
-    def _search_features_by_model(self, query: str, offset: int=0):
+    def _search_features_by_model(self, query: str, offset: int = 0):
         """
         Search features by model using provided keyword, returns up to 20 results
         Can set offset param `offset` for pagination
         :param query:
         :return:
         """
-        logging.getLogger().info(f"Searching for query: {query} and model: {self.model}")
+        logging.getLogger().info(
+            f"Searching for query: {query} and model: {self.model}"
+        )
         response = requests.post(
             "https://www.neuronpedia.org/api/explanation/search-model",
             headers={"Content-Type": "application/json"},
