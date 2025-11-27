@@ -70,7 +70,7 @@ class FeatureFinder:
             logger.info("Using cached top features for prompt")
             filtered = self.top_features_cache[prompt]
             for feature in filtered:
-                key = f"{prompt}||{feature["featureIndex"]}"
+                key = f"{prompt}||{feature['featureIndex']}"
                 self.activation_cache[key] = feature
             self._save_json(self.activation_cache, f"caches/{self.model_name}/{self.sourceset_to_test}/feature_activations_cache.json")
             return filtered
@@ -79,7 +79,7 @@ class FeatureFinder:
         top_features = self.neuronpedia.get_top_features_for_text_by_token(prompt, self.sourceset_to_test)
         filtered = [{"featureIndex": str(feat["featureIndex"]), "activationValue": feat["activationValue"]} for feat in top_features]
         for feature in filtered:
-            key = f"{prompt}||{feature["featureIndex"]}"
+            key = f"{prompt}||{feature['featureIndex']}"
             self.activation_cache[key] = feature
         self._save_json(self.activation_cache, f"caches/{self.model_name}/{self.sourceset_to_test}/feature_activations_cache.json")
         self.top_features_cache[prompt] = filtered

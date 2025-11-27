@@ -1,0 +1,111 @@
+{
+  "summary": {
+    "total_models": 7,
+    "total_prompts": 5,
+    "total_tests": 35,
+    "successful_tests": 20,
+    "success_rate": 0.5714285714285714
+  },
+  "model_performance": {
+    "gpt-4o-mini": {
+      "avg_original_score": 0.7258288770053476,
+      "avg_rephrased_score": 0.7558823529411764,
+      "avg_improvement": 0.030053475935828876,
+      "tests_count": 5
+    },
+    "gpt-3.5-turbo": {
+      "avg_original_score": 0.6931016042780749,
+      "avg_rephrased_score": 0.7545454545454545,
+      "avg_improvement": 0.06144385026737968,
+      "tests_count": 5
+    },
+    "claude-3-5-sonnet": {
+      "avg_original_score": 0.6862032085561497,
+      "avg_rephrased_score": 0.76,
+      "avg_improvement": 0.07379679144385028,
+      "tests_count": 5
+    },
+    "claude-3-haiku": {
+      "avg_original_score": 0.7065775401069518,
+      "avg_rephrased_score": 0.7653475935828876,
+      "avg_improvement": 0.05877005347593582,
+      "tests_count": 5
+    },
+    "llama-2-7b": {
+      "avg_original_score": 0.7,
+      "avg_rephrased_score": 0.7,
+      "avg_improvement": 0.0,
+      "tests_count": 5
+    },
+    "mistral-7b": {
+      "avg_original_score": 0.7,
+      "avg_rephrased_score": 0.7,
+      "avg_improvement": 0.0,
+      "tests_count": 5
+    },
+    "llama3.1-8b": {
+      "avg_original_score": 0.7,
+      "avg_rephrased_score": 0.7,
+      "avg_improvement": 0.0,
+      "tests_count": 5
+    }
+  },
+  "prompt_effectiveness": [
+    {
+      "prompt_index": 1,
+      "risk_score": 6.953125,
+      "triggering_features": [
+        "9558",
+        "18677"
+      ],
+      "avg_improvement": 0.04587471352177235,
+      "models_tested": 7
+    },
+    {
+      "prompt_index": 2,
+      "risk_score": 6.796875,
+      "triggering_features": [
+        "9558",
+        "18677"
+      ],
+      "avg_improvement": 0.02742551566080977,
+      "models_tested": 7
+    },
+    {
+      "prompt_index": 3,
+      "risk_score": 6.59375,
+      "triggering_features": [
+        "18677",
+        "9558"
+      ],
+      "avg_improvement": 0.02242169595110772,
+      "models_tested": 7
+    },
+    {
+      "prompt_index": 4,
+      "risk_score": 6.546875,
+      "triggering_features": [
+        "9558",
+        "18677"
+      ],
+      "avg_improvement": 0.01264323911382735,
+      "models_tested": 7
+    },
+    {
+      "prompt_index": 5,
+      "risk_score": 6.3125,
+      "triggering_features": [
+        "9558",
+        "18677"
+      ],
+      "avg_improvement": 0.05168067226890757,
+      "models_tested": 7
+    }
+  ],
+  "transfer_insights": {
+    "successful_transfers": 3,
+    "transfer_success_rate": 0.08571428571428572,
+    "best_improving_model": "claude-3-5-sonnet",
+    "worst_improving_model": "llama-2-7b"
+  }
+}

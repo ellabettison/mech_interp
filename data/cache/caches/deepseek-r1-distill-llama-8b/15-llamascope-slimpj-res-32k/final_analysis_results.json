@@ -1,0 +1,231 @@
+{
+  "summary": {
+    "total_prompts": 302,
+    "refused_prompts": 207,
+    "complied_prompts": 95,
+    "refusal_rate": 0.6854304635761589,
+    "total_features": 154
+  },
+  "top_features": [
+    {
+      "feature_id": "18677",
+      "refuse_mean": 2.409297429078014,
+      "comply_mean": 2.2713623046875,
+      "diff": 0.13793512439051403,
+      "refusal_score": 35.81108274657486,
+      "n_refuse": 141,
+      "n_comply": 32,
+      "refuse_freq": 0.6811594202898551,
+      "comply_freq": 0.3368421052631579
+    },
+    {
+      "feature_id": "22122",
+      "refuse_mean": 1.2119944852941176,
+      "comply_mean": 1.275735294117647,
+      "diff": -0.0637408088235294,
+      "refusal_score": 23.168065090261887,
+      "n_refuse": 85,
+      "n_comply": 17,
+      "refuse_freq": 0.4106280193236715,
+      "comply_freq": 0.17894736842105263
+    },
+    {
+      "feature_id": "25436",
+      "refuse_mean": 1.256787109375,
+      "comply_mean": 1.315673828125,
+      "diff": -0.058886718749999956,
+      "refusal_score": 21.805237732011186,
+      "n_refuse": 80,
+      "n_comply": 16,
+      "refuse_freq": 0.3864734299516908,
+      "comply_freq": 0.16842105263157894
+    },
+    {
+      "feature_id": "20157",
+      "refuse_mean": 1.0129774305555554,
+      "comply_mean": 0.9134114583333334,
+      "diff": 0.09956597222222208,
+      "refusal_score": 19.210762697050594,
+      "n_refuse": 90,
+      "n_comply": 24,
+      "refuse_freq": 0.43478260869565216,
+      "comply_freq": 0.25263157894736843
+    },
+    {
+      "feature_id": "9558",
+      "refuse_mean": 2.970501077586207,
+      "comply_mean": 2.7125,
+      "diff": 0.25800107758620694,
+      "refusal_score": 14.80986076314913,
+      "n_refuse": 58,
+      "n_comply": 15,
+      "refuse_freq": 0.28019323671497587,
+      "comply_freq": 0.15789473684210525
+    },
+    {
+      "feature_id": "27002",
+      "refuse_mean": 1.2547906839622642,
+      "comply_mean": 1.2542317708333333,
+      "diff": 0.0005589131289309712,
+      "refusal_score": 12.977874918220408,
+      "n_refuse": 53,
+      "n_comply": 12,
+      "refuse_freq": 0.2560386473429952,
+      "comply_freq": 0.12631578947368421
+    },
+    {
+      "feature_id": "27596",
+      "refuse_mean": 1.2953404017857142,
+      "comply_mean": 1.4541666666666666,
+      "diff": -0.15882626488095242,
+      "refusal_score": 11.26366641240783,
+      "n_refuse": 56,
+      "n_comply": 15,
+      "refuse_freq": 0.27053140096618356,
+      "comply_freq": 0.15789473684210525
+    },
+    {
+      "feature_id": "2462",
+      "refuse_mean": 0.9371651785714286,
+      "comply_mean": 0.7829241071428571,
+      "diff": 0.15424107142857146,
+      "refusal_score": 11.08220222204061,
+      "n_refuse": 35,
+      "n_comply": 7,
+      "refuse_freq": 0.16908212560386474,
+      "comply_freq": 0.07368421052631578
+    },
+    {
+      "feature_id": "26724",
+      "refuse_mean": 0.966015625,
+      "comply_mean": 0.9092548076923077,
+      "diff": 0.056760817307692335,
+      "refusal_score": 11.03798701874181,
+      "n_refuse": 50,
+      "n_comply": 13,
+      "refuse_freq": 0.24154589371980675,
+      "comply_freq": 0.1368421052631579
+    },
+    {
+      "feature_id": "30346",
+      "refuse_mean": 0.9231135670731707,
+      "comply_mean": 0.9261363636363636,
+      "diff": -0.003022796563192931,
+      "refusal_score": 8.2278159166031,
+      "n_refuse": 41,
+      "n_comply": 11,
+      "refuse_freq": 0.19806763285024154,
+      "comply_freq": 0.11578947368421053
+    },
+    {
+      "feature_id": "32069",
+      "refuse_mean": 1.3323184742647058,
+      "comply_mean": 1.3909505208333333,
+      "diff": -0.058632046568627416,
+      "refusal_score": 7.587083651156878,
+      "n_refuse": 68,
+      "n_comply": 24,
+      "refuse_freq": 0.3285024154589372,
+      "comply_freq": 0.25263157894736843
+    },
+    {
+      "feature_id": "31045",
+      "refuse_mean": 0.935302734375,
+      "comply_mean": 0.9184895833333333,
+      "diff": 0.016813151041666696,
+      "refusal_score": 7.567063623307591,
+      "n_refuse": 48,
+      "n_comply": 15,
+      "refuse_freq": 0.2318840579710145,
+      "comply_freq": 0.15789473684210525
+    },
+    {
+      "feature_id": "4064",
+      "refuse_mean": 0.9163773148148148,
+      "comply_mean": 0.7661830357142857,
+      "diff": 0.15019427910052907,
+      "refusal_score": 7.176999999243277,
+      "n_refuse": 27,
+      "n_comply": 7,
+      "refuse_freq": 0.13043478260869565,
+      "comply_freq": 0.07368421052631578
+    },
+    {
+      "feature_id": "32662",
+      "refuse_mean": 0.9256663602941176,
+      "comply_mean": 1.0750868055555556,
+      "diff": -0.14942044526143794,
+      "refusal_score": 6.951436562420545,
+      "n_refuse": 34,
+      "n_comply": 9,
+      "refuse_freq": 0.1642512077294686,
+      "comply_freq": 0.09473684210526316
+    },
+    {
+      "feature_id": "32697",
+      "refuse_mean": 1.1672585227272727,
+      "comply_mean": 0.919921875,
+      "diff": 0.2473366477272727,
+      "refusal_score": 6.785596327260015,
+      "n_refuse": 22,
+      "n_comply": 6,
+      "refuse_freq": 0.10628019323671498,
+      "comply_freq": 0.06315789473684211
+    },
+    {
+      "feature_id": "18770",
+      "refuse_mean": 0.7599826388888888,
+      "comply_mean": 0.6979166666666666,
+      "diff": 0.06206597222222221,
+      "refusal_score": 6.15841715929316,
+      "n_refuse": 18,
+      "n_comply": 3,
+      "refuse_freq": 0.08695652173913043,
+      "comply_freq": 0.031578947368421054
+    },
+    {
+      "feature_id": "29349",
+      "refuse_mean": 0.9253700657894737,
+      "comply_mean": 0.9713541666666666,
+      "diff": -0.04598410087719296,
+      "refusal_score": 6.0208492245105525,
+      "n_refuse": 19,
+      "n_comply": 3,
+      "refuse_freq": 0.09178743961352658,
+      "comply_freq": 0.031578947368421054
+    },
+    {
+      "feature_id": "3357",
+      "refuse_mean": 0.8619384765625,
+      "comply_mean": 0.9774305555555556,
+      "diff": -0.11549207899305558,
+      "refusal_score": 5.985252987541316,
+      "n_refuse": 32,
+      "n_comply": 9,
+      "refuse_freq": 0.15458937198067632,
+      "comply_freq": 0.09473684210526316
+    },
+    {
+      "feature_id": "2400",
+      "refuse_mean": 0.9522569444444444,
+      "comply_mean": 0.900390625,
+      "diff": 0.05186631944444442,
+      "refusal_score": 5.141088823735062,
+      "n_refuse": 27,
+      "n_comply": 8,
+      "refuse_freq": 0.13043478260869565,
+      "comply_freq": 0.08421052631578947
+    },
+    {
+      "feature_id": "13230",
+      "refuse_mean": 1.0310872395833333,
+      "comply_mean": 0.87939453125,
+      "diff": 0.15169270833333326,
+      "refusal_score": 4.69007735030511,
+      "n_refuse": 24,
+      "n_comply": 8,
+      "refuse_freq": 0.11594202898550725,
+      "comply_freq": 0.08421052631578947
+    }
+  ]
+}
